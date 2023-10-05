@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300" style=" border: 2px solid black;"></canvas>
+</body>
+<script>
+    let canvas = document.getElementById("canvas");
+    let context = canvas.getContext("2d");
+
+    let x = 50;
+    let y = 50;
+    
+
+    canvas.addEventListener("click", (event) => {
+
+        x = event.clientX;
+        y = event.clientY;
+
+    })
+    function update() {
+
+        context.clearRect(0, 0, 300, 300);
+
+        context.beginPath();
+        context.fillStyle = "blue";
+        context.arc(x, y, 40, 0, 360);
+        context.fill(); 
+        y = y + 1;
+        window.requestAnimationFrame(update);
+
+    }
+    update();
+
+</script>
+
+</html>
